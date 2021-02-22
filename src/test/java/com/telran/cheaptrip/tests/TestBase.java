@@ -36,8 +36,8 @@ public class TestBase {
         caps = new DesiredCapabilities();
         final String baseDir = System.getProperty("user.dir") + "/app";
         caps.setCapability("platformName", "Android");
-        caps.setCapability("platformVersion", "10.0");
-        caps.setCapability("deviceName", "Nexus_6_API_29");
+        caps.setCapability("platformVersion", "8.0.0");
+        caps.setCapability("deviceName", "qa11_mob");
         caps.setCapability("automationName", "Appium");
         caps.setCapability("appPackage", "io.ionic.starter");
         caps.setCapability("appActivity", "io.ionic.starter.MainActivity");
