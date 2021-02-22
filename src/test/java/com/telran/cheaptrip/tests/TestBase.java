@@ -2,6 +2,7 @@ package com.telran.cheaptrip.tests;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class TestBase {
 
-    AppiumDriver driver;
+    AppiumDriver<WebElement> driver;
     DesiredCapabilities caps;
 
     Logger logger = LoggerFactory.getLogger(TestBase.class);
@@ -42,7 +43,7 @@ public class TestBase {
         caps.setCapability("appActivity", "io.ionic.starter.MainActivity");
         caps.setCapability("app", baseDir + "/app-debug.apk");
 
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
+        driver = new AndroidDriver<>(new URL("http://127.0.0.1:4723/wd/hub"), caps);
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
@@ -55,7 +56,7 @@ public class TestBase {
         System.out.println("app started");
     }
 
-    @AfterMethod
+    @AfterMethod (enabled = false)
     public void quitApp() {
         driver.closeApp();
         driver.quit();
