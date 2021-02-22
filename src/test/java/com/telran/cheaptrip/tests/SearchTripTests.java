@@ -22,6 +22,7 @@ public class SearchTripTests extends  TestBase {
         mainPageHelper.fillInFromTypeForm("Berlin");
         Thread.sleep(100);
         mainPageHelper.fillInToTypeForm("Moscow");
+        driver.hideKeyboard();
         Thread.sleep(100);
         mainPageHelper.clickOnLetsGoButton();
         WebElement tripContainer = driver.findElement(By.xpath("/hierarchy" +
