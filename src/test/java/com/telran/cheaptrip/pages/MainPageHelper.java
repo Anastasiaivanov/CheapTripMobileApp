@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainPageHelper extends PageBase {
 
-    private static final String TRIP_PANEL_XPATH ="/hierarchy" +
+    private static final String TRIP_PANEL_XPATH = "/hierarchy" +
             "/android.widget.FrameLayout" +
             "/android.widget.LinearLayout" +
             "/android.widget.FrameLayout" +
