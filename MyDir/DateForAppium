@@ -1,7 +1,0 @@
-"platformName"; "Android"
-"platformVersion"; "8.0.0"
-"deviceName"; "qa11_mob"
-"automationName"; "Appium"
-"appPackage"; "io.ionic.starter"
-"appActivity"; "io.ionic.starter.MainActivity"
-"app"; baseDir + "/app-debug.apk"
