@@ -28,6 +28,20 @@ public class MainPageHelper extends PageBase {
             "/android.view.View[2]" +
             "/android.view.View";
 
+    private static final String XPATH_FOR_CONTACT = "/hierarchy" +
+            "/android.widget.FrameLayout" +
+            "/android.widget.LinearLayout" +
+            "/android.widget.FrameLayout" +
+            "/android.widget.LinearLayout" +
+            "/android.widget.FrameLayout" +
+            "/android.view.ViewGroup" +
+            "/android.webkit.WebView" +
+            "/android.webkit.WebView" +
+            "/android.view.View" +
+            "/android.view.View" +
+            "/android.view.View" +
+            "/android.view.";
+
     public MainPageHelper(WebDriver driver) {
         super(driver);
     }
@@ -84,14 +98,12 @@ public class MainPageHelper extends PageBase {
             "/android.view.View")
     WebElement letsGoButton;
 
-
     public void fillInFromTypeForm(String textInput) {
         fromLine.click();
         inputTextToField(fromLine, textInput);
         waitUntilElementVisible(submitCityFrom, 5);
         submitCityFrom.click();
     }
-
 
     public void fillInToTypeForm(String textInput) {
         toLine.click();
@@ -104,24 +116,33 @@ public class MainPageHelper extends PageBase {
         letsGoButton.click();
     }
 
-    @FindBy(id = "main-content")
-    WebElement homepage;
+    @FindBy(xpath = XPATH_FOR_CONTACT + "View/android.view.View/android.view.View" +
+            "/android.view.View/android.view.View/android.view.View" +
+            "/android.view.View[1]/android.view.View[2]/android.view.View[1]" +
+            "/android.view.View/android.widget.Button")
+    WebElement hamburgerFromMainPage;
 
-    @FindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View[2]/android.view.View[1]/android.view.View/android.widget.Button")
-    WebElement hamburger;
+    @FindBy(xpath = XPATH_FOR_CONTACT + "View/android.view.View/android.view.View[1]" +
+            "/android.view.View[1]/android.view.View[2]/android.view.View[1]" +
+            "/android.view.View/android.widget.Button")
+    WebElement hamburgerFromContactPage;
 
-    @FindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[3]/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View")
+    @FindBy(xpath = XPATH_FOR_CONTACT + "View[2]/android.view.View/android.view.View" +
+            "/android.view.View/android.view.View/android.view.View/android.view.View[3]" +
+            "/android.view.View[2]/android.view.View/android.view.View[1]/android.view.View")
     WebElement contacts;
 
-    @FindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View/android.view.View[1]/android.view.View[3]")
+    @FindBy(xpath = XPATH_FOR_CONTACT + "View/android.view.View/android.view.View[1]" +
+            "/android.view.View[1]/android.view.View[2]" +
+            "/android.view.View[2]/android.view.View")
     WebElement contactData;
 
-    @FindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]/android.view.View[1]/android.view.View/android.view.View[1]/android.view.View[1]/android.view.View[1]/android.widget.ListView/android.widget.Button")
+    @FindBy(xpath = XPATH_FOR_CONTACT + "View[1]/android.view.View[1]/android.view.View" +
+            "/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View")
     WebElement homeButton;
 
-    public void findHamburger() throws InterruptedException {
-        Thread.sleep(8000);
-        hamburger.click();
+    public void findHamburger() {
+        hamburgerFromMainPage.click();
         waitUntilElementVisible(contacts, 3);
     }
 
@@ -130,11 +151,9 @@ public class MainPageHelper extends PageBase {
         waitUntilElementVisible(contactData, 10);
     }
 
-    public void findHomeButton() throws InterruptedException {
-        Thread.sleep(1000);
-        hamburger.click();
+    public void findHomeButton() {
+        hamburgerFromContactPage.click();
         homeButton.click();
-        assert isElementPresent(homepage);
     }
 
 }
