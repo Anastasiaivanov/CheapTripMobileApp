@@ -13,6 +13,9 @@ The test package consist of
 
 - UI tests (visibility objects and the result of searching on page)
 
+- saving logs to a new file each time while running the test script. 
+  In case of error creating screenshot.
+
 Technology Used : Java, Selenium, Maven, Appium, Android Studio
  
 
